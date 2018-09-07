@@ -8,7 +8,7 @@ namespace BizSolution
 {
     public partial class Form1 : Form
     {
-        private string _name;
+        
 
         public Form1()
         {
@@ -34,6 +34,8 @@ namespace BizSolution
             con.Open();
             var command = new SqlCommand(query, con);
             var sqlDataReader = command.ExecuteReader();
+            var dcmb = new DataGridViewComboBoxCell();
+            
             if (sqlDataReader.HasRows)
                 while (sqlDataReader.Read())
                     dataGridView1.Rows.Add(sqlDataReader["id"].ToString(),
@@ -182,7 +184,8 @@ namespace BizSolution
             var formOrder = new FormOrder
             {   
                 GetId=txtId.Text,
-                GetNamem = txtName.Text
+                GetName = txtName.Text,
+                GetDate = (DateTime) dateTimePicker1.Value
             };
             formOrder.ShowDialog();
         }

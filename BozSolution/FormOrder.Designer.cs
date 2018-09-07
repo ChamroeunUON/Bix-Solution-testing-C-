@@ -38,9 +38,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.product = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,18 +62,24 @@
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
+            this.product,
             this.Column2,
-            this.Column3});
+            this.Column3,
+            this.Column1});
             this.dataGridView1.Location = new System.Drawing.Point(80, 89);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(368, 123);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             // 
             // txtTotal
             // 
@@ -87,6 +94,7 @@
             this.txtReceive.Name = "txtReceive";
             this.txtReceive.Size = new System.Drawing.Size(158, 20);
             this.txtReceive.TabIndex = 3;
+            this.txtReceive.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtReceive_KeyUp);
             // 
             // txtExchange
             // 
@@ -129,22 +137,32 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Exchange";
             // 
-            // Column1
+            // product
             // 
-            this.Column1.HeaderText = "Product";
-            this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.product.DataPropertyName = "product";
+            this.product.HeaderText = "Product";
+            this.product.Name = "product";
+            this.product.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.product.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column2
             // 
+            this.Column2.DataPropertyName = "qty";
             this.Column2.HeaderText = "QTY";
             this.Column2.Name = "Column2";
             // 
             // Column3
             // 
+            this.Column3.DataPropertyName = "sum";
             this.Column3.HeaderText = "Sum";
             this.Column3.Name = "Column3";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "";
+            this.Column1.Name = "Column1";
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column1.Width = 20;
             // 
             // FormOrder
             // 
@@ -182,8 +200,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn product;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
