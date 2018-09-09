@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
@@ -34,8 +35,6 @@ namespace BizSolution
             con.Open();
             var command = new SqlCommand(query, con);
             var sqlDataReader = command.ExecuteReader();
-            var dcmb = new DataGridViewComboBoxCell();
-            
             if (sqlDataReader.HasRows)
                 while (sqlDataReader.Read())
                     dataGridView1.Rows.Add(sqlDataReader["id"].ToString(),
@@ -183,11 +182,39 @@ namespace BizSolution
             if (!e.ColumnIndex.Equals(6)) return;
             var formOrder = new FormOrder
             {   
-                GetId=txtId.Text,
-                GetName = txtName.Text,
+                GetId= dataGridView1.CurrentRow.Cells[0].Value.ToString(),
+                GetName = dataGridView1.CurrentRow.Cells[1].Value.ToString(),
                 GetDate = (DateTime) dateTimePicker1.Value
             };
             formOrder.ShowDialog();
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                dataGridView1.Rows.Clear();
+                var con = new SqlConnection(ConnectionString.GetStringConnection);
+                con.Open();
+//                var query = ""%";
+                var command  = new SqlCommand("SELECT * FROM person WHERE name LIKE '%" + txtSearch.Text+"%'",con);
+//                MessageBox.Show(query);
+                var sqlDataReader = command.ExecuteReader();
+                if(!sqlDataReader.HasRows) return;
+                    while (sqlDataReader.Read())
+                        dataGridView1.Rows.Add(sqlDataReader["id"].ToString(),
+                            sqlDataReader["name"].ToString(),
+                            sqlDataReader["dob"].ToString(),
+                            sqlDataReader["gender"].ToString(),
+                            sqlDataReader["phone"].ToString(),
+                            sqlDataReader["addre"].ToString()
+                        );
+                con.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"Error Message:" + exception);
+            }
         }
     }
 }

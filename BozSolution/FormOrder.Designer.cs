@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.cboTest = new System.Windows.Forms.ComboBox();
             this.product = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,8 +79,7 @@
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
+
             // 
             // txtTotal
             // 
@@ -137,9 +137,19 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Exchange";
             // 
+            // cboTest
+            // 
+            this.cboTest.FormattingEnabled = true;
+            this.cboTest.Location = new System.Drawing.Point(370, 253);
+            this.cboTest.Name = "cboTest";
+            this.cboTest.Size = new System.Drawing.Size(121, 21);
+            this.cboTest.TabIndex = 4;
+            this.cboTest.SelectedIndexChanged += new System.EventHandler(this.cboTest_SelectedIndexChanged);
+            // 
             // product
             // 
             this.product.DataPropertyName = "product";
+            this.product.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.product.HeaderText = "Product";
             this.product.Name = "product";
             this.product.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -159,16 +169,17 @@
             // 
             // Column1
             // 
+            this.Column1.DataPropertyName = "proId";
             this.Column1.HeaderText = "";
             this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column1.Width = 20;
+            this.Column1.Visible = false;
             // 
             // FormOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 383);
+            this.Controls.Add(this.cboTest);
             this.Controls.Add(this.txtExchange);
             this.Controls.Add(this.txtReceive);
             this.Controls.Add(this.txtName);
@@ -200,6 +211,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cboTest;
         private System.Windows.Forms.DataGridViewComboBoxColumn product;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

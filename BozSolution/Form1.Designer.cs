@@ -52,7 +52,7 @@
             this.Update = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.cboGender = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -258,12 +258,13 @@
             this.cboGender.Size = new System.Drawing.Size(145, 21);
             this.cboGender.TabIndex = 7;
             // 
-            // textBox1
+            // txtSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(143, 293);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(145, 20);
-            this.textBox1.TabIndex = 6;
+            this.txtSearch.Location = new System.Drawing.Point(143, 293);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(145, 20);
+            this.txtSearch.TabIndex = 6;
+            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // label1
             // 
@@ -280,7 +281,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(797, 523);
             this.Controls.Add(this.cboGender);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
@@ -333,7 +334,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gender;
         private System.Windows.Forms.DataGridViewTextBoxColumn dob;
         private System.Windows.Forms.DataGridViewButtonColumn Action;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
     }
 }
